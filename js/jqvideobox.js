@@ -74,6 +74,11 @@ jQuery( function ($) {
             var videoId = href.split('=');
             path = 'http://i2.ytimg.com/vi/'+videoId[1]+'/default.jpg';
             break;
+
+          case 'youtu.be':
+            var videoId = href.split('=');
+            path = 'http://i2.ytimg.com/vi/'+videoId[3]+'/default.jpg';
+            break;
           
           case 'metacafe':
             var videoId = href.split('/');
@@ -125,6 +130,9 @@ jQuery( function ($) {
         var type = '';
         if (href.match(/youtube\.com\/watch/i)) {
           type = 'youtube';
+        }
+        else if (href.match(/youtu\.be/i)) {
+          type = 'youtu.be';
         }
         else if (href.match(/metacafe\.com\/watch/i)) {
           type = 'metacafe';
@@ -266,6 +274,12 @@ jQuery( function ($) {
               flash = false;
               var videoId = href.split('=');
               other = '<iframe frameborder="0" width="' + options.contentsWidth + '" height="' + options.contentsHeight + '" src="http://www.youtube.com/embed/' + videoId[1] + '"></iframe>';
+            break;
+
+          case 'youtu.be':
+              flash = false;
+              var videoId = href.split('/');
+              other = '<iframe frameborder="0" width="' + options.contentsWidth + '" height="' + options.contentsHeight + '" src="http://www.youtube.com/embed/' + videoId[3] + '"></iframe>';
             break;
             
           case 'metacafe':
